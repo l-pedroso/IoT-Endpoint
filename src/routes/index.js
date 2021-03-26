@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {checkJwt, checkScopes} = require('../middleware/JWT_Auth');
+const {checkJwt, checkScopes} = require('../middlewares/JWT_Auth');
 const userInfo = require('../controllers/userInfo');
 
 
@@ -13,7 +13,7 @@ router.get('/public', function(req, res) {
   });
 });
 
-router.get('/private', userInfo, function(req,res){
+router.get('/register', userInfo, function(req,res){
   res.json({
     message: 'Hello from a private endpoint! You need to be authenticated to see this.'
   });
