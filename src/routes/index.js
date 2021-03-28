@@ -13,11 +13,7 @@ router.get('/public', function(req, res) {
   });
 });
 
-router.get('/register', userInfo, function(req,res){
-  res.json({
-    message: 'Hello from a private endpoint! You need to be authenticated to see this.'
-  });
-});
+router.get('/register', userInfo);
 
 
 router.get('/private-scoped', checkJwt, checkScopes, function(req, res) {

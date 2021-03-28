@@ -2,8 +2,13 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 userSchema = new Schema({
-    email: {
+    userEmail: {
         type: String,
+        required: true,
+    },
+
+    emailVerified: {
+        type: Boolean,
         required: true,
     },
 

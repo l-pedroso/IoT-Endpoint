@@ -10,30 +10,24 @@ module.exports = function(req, res, next){
     })  
       .then(function (response) {
 
-        const {userEmail, emailVerify} = response.data;
+        const {email, email_verified} = response.data;
 
-        User.findOne({email: userEmail}, function(err, user){
+        User.findOne({userEmail: email}, function(err, user){
           
-          if (!err) return res.status(401).json({Error: 'Email is already associated with another account.'});
+          if (user) return res.status(401).json({Error: 'Email is already associated with another account.'});
+          if(!email_verified) return res.status(401).json({Error: 'Email need be verified'});
           
-          const newUser = new User({email: response.data.email});
+          const newUser = new User({userEmail: email, emailVerified: email_verified});
 
           newUser.save(function(err, user){
-            if(err){
-              console.log('database error');
-            } else {
-              console.log('user saved on database');
-            }
-          });
-        });
-
-        console.log(response.data);
-
+            console.log(err);
+            if(err) return res.status(401).json({Error: 'Database Error'});
+            return res.json({Sucess: 'User saved'});
+          }) 
+        })
+        console.log(response.data);      
       })
       .catch(function (error) {
         console.log(error);
       });
-
-      next();
-
 }
