@@ -7,6 +7,14 @@ userSchema = new Schema({
         required: true,
     },
 
+    givenName: {
+        type: String,
+    },
+
+    lastName:{
+        type: String,
+    },
+
     emailVerified: {
         type: Boolean,
         required: true,

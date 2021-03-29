@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {checkJwt, checkScopes} = require('../middlewares/JWT_Auth');
-const userInfo = require('../controllers/userInfo');
+const {userRegister} = require('../controllers/userInfo');
 
 
 router.use(checkJwt);
@@ -13,7 +13,7 @@ router.get('/public', function(req, res) {
   });
 });
 
-router.get('/register', userInfo);
+router.get('/register', userRegister);
 
 
 router.get('/private-scoped', checkJwt, checkScopes, function(req, res) {
