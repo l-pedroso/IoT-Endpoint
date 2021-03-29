@@ -7,26 +7,28 @@ module.exports = class{
   constructor(token){
 
     this.accessToken = token;
-
+    
   }
 
-  getUserInfo(){
+  async getUserInfo(){
 
-    axios.post('https://dev-75o6icsz.us.auth0.com/userinfo',null, {
-      headers:{
-          'Authorization': this.accessToken,
-      }      
-    })  
-    .then(function (response) {
+    try{
 
-      console.log(response.data);  
+     const response = await axios.post('https://dev-75o6icsz.us.auth0.com/userinfo',null, {
+        headers:{
+            'Authorization': this.accessToken,
+        }      
+      });  
       return response.data;
-        
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+
+    }
+
+    catch(e){
+      console.log(e);
+    }
+
   };
+
 /*
   validateUser(){
     
@@ -48,10 +50,12 @@ module.exports = class{
 
   };
 */
-  saveUser(){
+  async saveUser(){
     
-    const {email, email_verified, given_name, family_name} = this.getUserInfo();
-    console.log(email + given_name );
+    const data =  this.getUserInfo();
+    data.then((param) => {
+      return param.email;
+    });
 /*
     User.findOne({userEmail: email}, function(err, user){
 
