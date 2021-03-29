@@ -10,29 +10,37 @@ module.exports = class{
     
   }
 
-  async getUserInfo(){
+  async init(){
 
-    try{
-
-     const response = await axios.post('https://dev-75o6icsz.us.auth0.com/userinfo',null, {
-        headers:{
+    const response = await axios.post('https://dev-75o6icsz.us.auth0.com/userinfo',null, {
+      headers:{
             'Authorization': this.accessToken,
-        }      
-      });  
-      return response.data;
+      }      
+    }); 
 
-    }
-
-    catch(e){
-      console.log(e);
-    }
-
+    this.email = response.data.email;
+    this.givenName = response.data.given_name;
+    this.lastName = response.data.family_name;
+    
   };
 
-/*
-  validateUser(){
+  async validateUser(){
+
+    try{
+      const query = await User.findOne({userEmail: this.email});
+      if(!query) return -1;
+      if(!query.emailVerified) return -2;
+
+      return 0;
+    }
+    catch(e){
+       return -3;
+    }
     
-    User.findOne({userEmail: email}, function(err, user){
+    
+    /*
+    
+    function(err, user){
 
       if (user) return -1;
       if(!email_verified) return -2;
@@ -48,9 +56,11 @@ module.exports = class{
       });
     });
 
+    */
+
   };
-*/
-  async saveUser(){
+
+  async save(){
     
     const data =  this.getUserInfo();
     data.then((param) => {
