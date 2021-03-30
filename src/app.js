@@ -2,7 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const routes = require('./routes/index')
+const routes = require('./routes/index');
+const public = require('./routes/public');
 
 
 //=== 1 - CREATE APP
@@ -28,6 +29,7 @@ mongoose.connection.on('error', err => {
 
 //==== 3 - ROUTES INITIALIZATION
 app.use('/api/v1', routes);
+app.use(public);
 
 //=== 4 - START SERVER
 //app.listen(process.env.PORT || 3000, () => console.log('Server running on http://localhost:'+process.env.PORT+'/'));
