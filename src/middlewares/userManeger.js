@@ -8,6 +8,7 @@ module.exports = async function(req, res){
   
   switch(await user.validateUser()){
     case user.result.USER_AREADY_IN_DB:
+        await user.addDevice();
         return res.json({Error: 'User aready registered'});
       
         case user.result.USER_NOT_FOUND:

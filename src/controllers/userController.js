@@ -1,5 +1,6 @@
 const axios = require('axios').default;
-const User = require('../models/userModel');
+const UserModel = require('../models/userModel');
+const { uuid } = require('uuidv4');
 
 errorEnum = {
   SUCCESS: 0,
@@ -38,7 +39,7 @@ module.exports = class{
 
   async validateUser(){
     try{
-      const query = await User.findOne({userEmail: this.email});
+      const query = await UserModel.findOne({userEmail: this.email});
       if(!query) return this.result.USER_NOT_FOUND; // user not found
       if(!query.emailVerified) return this.result.EMAIL_NOT_VERIFIED; // email not verified
 
@@ -51,10 +52,10 @@ module.exports = class{
 
   async save(){
     try{
-      const query = await User.findOne({userEmail: this.email});
+      const query = await UserModel.findOne({userEmail: this.email});
       if(query) return this.result.USER_AREADY_IN_DB;// user aready saved in database
 
-      const newUser = new User({userEmail: this.email, emailVerified: this.emailVerified, 
+      const newUser = new UserModel({userEmail: this.email, emailVerified: this.emailVerified, 
         givenName: this.givenName, lastName: this.lastName});
 
       const result = await newUser.save();
@@ -65,5 +66,40 @@ module.exports = class{
     catch(e){
       return this.result.INTERNAL_ERROR; // database error
     }
+  }
+
+
+  async addDevice(){
+
+    try{
+      const query = await UserModel.findOne({userEmail: this.email});
+      if(!query) return this.result.USER_NOT_FOUND; // user not found
+      if(!query.emailVerified) return this.result.EMAIL_NOT_VERIFIED; // email not verified
+      const uniqueID = uuid();
+      const result = await UserModel.updateOne({userEmail:this.email}, 
+        {$push:{
+          devices: {deviceID: uniqueID}
+        }});
+     
+        const response = await axios.post('https://tfik1l.internetofthings.ibmcloud.com/api/v0002/device/types/Switch/devices',{
+          deviceId: uniqueID,
+          authToken: 'VDQWHnF3FRYoM(JO4k',
+        }, {
+          
+        headers:{
+              'Authorization': 'Basic YS10ZmlrMWwtZm81ZWVlMjFmZzpWRFFXSG5GM0ZSWW9NKEpPNGs=',
+        },  
+
+   
+      }); 
+      
+
+      //console.log(response.status);
+        
+      if(result.n === 1) return console.log('device add with sucess');
+    }
+    catch(e){
+      return console.log(e + 'error in update')
+    } 
   }
 }
