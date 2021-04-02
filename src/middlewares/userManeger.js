@@ -4,11 +4,10 @@ module.exports = async function(req, res){
   
   const user = new User(req.get('authorization'));
  
-  if(await user.init()) return res.status(401).json({Error: 'Can not get user info'});
+  if(await user.init() != user.result.SUCCESS) return res.status(401).json({Error: 'Can not get user info'});
   
   switch(await user.validateUser()){
     case user.result.USER_AREADY_IN_DB:
-        await user.addDevice();
         return res.json({Error: 'User aready registered'});
       
         case user.result.USER_NOT_FOUND:
