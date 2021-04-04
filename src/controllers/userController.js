@@ -11,16 +11,18 @@ const userEnum = {
   USER_OK: 0,
   USER_NOT_FOUND: -1,
   EMAIL_NOT_VERIFIED: -2, 
+  ERROR: -4,
 }
 
 
-let userStatus = userEnum.INTERNAL_ERROR; 
 
 module.exports = class{
 
   constructor(token){
     this.accessToken = token; 
     this.result = resultEnum;
+    this.status = userEnum;
+    this._userStatus = userEnum.INTERNAL_ERROR; 
   }
 
   async init(){
@@ -39,31 +41,40 @@ module.exports = class{
       this.givenName = response.data.given_name;
       this.lastName = response.data.family_name;
       this.emailVerified = response.data.email_verified;
-
+  
       const query = await UserModel.findOne({userEmail: this.email});
-      if(!query) userStatus = userEnum.USER_NOT_FOUND; // user not found
-      if(!query.emailVerified) userStatus = userEnum.EMAIL_NOT_VERIFIED; // email not verified
-      userStatus = userEnum.USER_OK; // user found and email verified
+    
+      if(!query) this._userStatus = userEnum.USER_NOT_FOUND; // user not found
+
+      if(query){
+        if(!query.emailVerified){
+          this._userStatus = userEnum.EMAIL_NOT_VERIFIED; // email not verified
+        }else{
+          this._userStatus = userEnum.USER_OK; // user found and email verified
+        }
+      }
       return resultEnum.SUCCESS;
     }
     catch(e){
-      return userStatus = resultEnum.ERROR;
+      this._userStatus = userEnum.ERROR;
+      return resultEnum.ERROR;
     }
   };
 
   async addUser(){
     try{
 
-      if(userStatus != userEnum.USER_NOT_FOUND){
-        return resultEnum.SUCCESS;
-      } 
-
+      if(this._userStatus === userEnum.USER_OK)  return resultEnum.SUCCESS;
+      if(this._userStatus === userEnum.ERROR) return resultEnum.ERROR;
+      
       const newUser = new UserModel({userEmail: this.email, emailVerified: this.emailVerified, 
         givenName: this.givenName, lastName: this.lastName});
 
       const result = await newUser.save();
  
       if(result === newUser){ 
+        if(this.emailVerified === true) this._userStatus = userEnum.USER_OK;
+        if(this.emailVerified === false) this._userStatus = userEnum.EMAIL_NOT_VERIFIED;
         return resultEnum.SUCCESS;
       }
       return resultEnum.ERROR
@@ -75,6 +86,19 @@ module.exports = class{
 
 
   getUserStatus(){
-    return userStatus;
+    return this._userStatus;
+  }
+
+
+  async getUserInfo(){
+
+    try{
+      const query = await UserModel.findOne({userEmail: this.email});
+      if(query) return query;
+      return resultEnum.ERROR;
+    }
+    catch(e){
+      return resultEnum.ERROR;
+    }
   }
 }
