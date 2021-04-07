@@ -1,17 +1,11 @@
 const { default: axios } = require('axios');
 const { uuid } = require('uuidv4');
-const UserModel = require('../models/userModel');
-
-const resultEnum = {
-  SUCCESS: 0,
-  ERROR: -1
-}
+const {resultEnum, userEnum} = require('../utils/enuns/globals.enum');
 
 module.exports = class{
 
     constructor(user){
         this.user = user;
-        this.result = resultEnum;
     }
 
     async addDevice(){
@@ -19,7 +13,7 @@ module.exports = class{
         
           const userStatus = this.user.getUserStatus();
 
-          if(userStatus != this.user.status.USER_OK) return resultEnum.ERROR;
+          if(userStatus != userEnum.USER_OK) return resultEnum.ERROR;
 
           const uniqueID = uuid();
 

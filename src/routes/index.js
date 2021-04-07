@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const {checkJwt, checkScopes} = require('../middlewares/jwtAuth');
-const userRegister = require('../middlewares/userManeger');
+const {checkJwt, checkScopes} = require('../middlewares/jwt_auth.middleware');
+const userRegister = require('../middlewares/user_maneger.middleware');
 
 
 router.use(checkJwt);

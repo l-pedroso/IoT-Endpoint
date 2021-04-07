@@ -1,27 +1,12 @@
 const axios = require('axios').default;
-const UserModel = require('../models/userModel');
-
-
-const resultEnum = {
-  SUCCESS: 0,
-  ERROR: -1,
-}
-
-const userEnum = {
-  USER_OK: 0,
-  USER_NOT_FOUND: -1,
-  EMAIL_NOT_VERIFIED: -2, 
-  ERROR: -4,
-}
-
-
+const UserModel = require('../models/user.model');
+const {resultEnum, userEnum} = require('../utils/enuns/globals.enum');
+ 
 
 module.exports = class{
 
   constructor(token){
     this.accessToken = token; 
-    this.result = resultEnum;
-    this.status = userEnum;
     this._userStatus = userEnum.INTERNAL_ERROR; 
   }
 
@@ -41,7 +26,7 @@ module.exports = class{
       this.givenName = response.data.given_name;
       this.lastName = response.data.family_name;
       this.emailVerified = response.data.email_verified;
-  
+      
       const query = await UserModel.findOne({userEmail: this.email});
     
       if(!query) this._userStatus = userEnum.USER_NOT_FOUND; // user not found
