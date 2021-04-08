@@ -1,25 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const {checkJwt, checkScopes} = require('../middlewares/jwt_auth.middleware');
+const {checkJwt} = require('../middlewares/jwt_auth.middleware');
 const userRegister = require('../middlewares/user_maneger.middleware');
+const deviceRegister = require('../middlewares/device_maneger.middleware');
 
 
 router.use(checkJwt);
 
-  // This route doesn't need authentication
-router.get('/public', function(req, res) {
-  res.json({
-    message: 'Hello from a public endpoint! You don\'t need to be authenticated to see this.'
-  });
-});
-
-router.get('/register', userRegister);
-
-
-router.get('/private-scoped', checkJwt, checkScopes, function(req, res) {
-  res.json({
-    message: 'Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.'
-  });
-});
+router.post('/user/register', userRegister);
+router.post('/device/register', deviceRegister);
 
 module.exports = router;

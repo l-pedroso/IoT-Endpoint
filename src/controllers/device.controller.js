@@ -32,6 +32,9 @@ module.exports = class{
               authToken: 'VDQWHnF3FRYoM(JO4k',
             }
           });
+
+
+          return resultEnum.SUCCESS;
   
           //console.log(response.status);
             
