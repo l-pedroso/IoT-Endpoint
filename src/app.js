@@ -5,6 +5,7 @@ const cors = require('cors');
 const routes = require('./routes/index');
 const public = require('./routes/public');
 
+
 //=== 1 - CREATE APP
 // Creating express app and configuring middleware needed for authentication
 const app = express();
