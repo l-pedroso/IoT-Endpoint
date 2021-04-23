@@ -28,7 +28,7 @@ mongoose.connection.on('error', err => {
 });
 
 //==== 3 - ROUTES INITIALIZATION
-app.use('/api/v1', routes);
+app.use('/api/v1',routes);
 app.use(public);
 
 //=== 4 - START SERVER

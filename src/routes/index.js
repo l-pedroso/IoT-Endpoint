@@ -7,14 +7,10 @@ const { join } = require("path");
 
 
 router.use(checkJwt);
-
+router.get('/admin', (req,res)=>{
+    res.sendFile(join(__dirname,'../views/private/groups.html'));
+})
 router.post('/user/register', userRegister);
 router.post('/device/register', deviceRegister);
-
-
-// Serve the index page for all other requests
-router.get("/private/devices", (_, res) => {
-    res.sendFile(join(__dirname, "../views/private/devices/devices.html"));
-  });
 
 module.exports = router;

@@ -5,11 +5,13 @@
   "main": "app.js",
   "scripts": {
     "test": "nodemon src/app.js",
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "dev": "parcel serve ./src/public/js/**/*.js --dist-dir ./src/public/dist"
   },
   "author": "Felipe",
   "license": "ISC",
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.14.0",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -21,7 +23,8 @@
     "uuidv4": "^6.2.7"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "parcel": "^2.0.0-beta.2"
   },
   "repository": {
     "type": "git",

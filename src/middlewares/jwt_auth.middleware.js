@@ -12,6 +12,15 @@ exports.checkJwt = jwt({
       jwksRequestsPerMinute: 5,
       jwksUri: `https://dev-75o6icsz.us.auth0.com/.well-known/jwks.json`
     }),
+
+    getToken: function fromHeaderOrQuerystring (req) {
+      if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+          return req.headers.authorization.split(' ')[1];
+      } else if (req.query && req.query.token) {
+        return req.query.token;
+      }
+      return null;
+    },
   
     // Validate the audience and the issuer
     audience: 'https//iot-authentication-api.com', //replace with your API's audience, available at Dashboard > APIs
