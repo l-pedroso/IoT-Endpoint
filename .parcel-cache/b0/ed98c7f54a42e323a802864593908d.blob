@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./static/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="/admin.HASH_REF_4044fc56e32289fd908cf943dc15bd44.css">
     <title>Document</title>
 </head>
 <body>
     <div id="root"></div>
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>    
-    <script src="./static/js/admin.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin=""></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin=""></script>    
+    <script src="/admin.HASH_REF_42076c78ed1be3a5600a29401f80e71c.js"></script>
   
 </body>
 </html>

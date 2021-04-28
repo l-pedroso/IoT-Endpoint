@@ -1,0 +1,245 @@
+var helpers = require("../../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _react = require("react");
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactDom = require("react-dom");
+  var _reactDomDefault = _parcelHelpers.interopDefault(_reactDom);
+  var _componentsDropMenu = require("./components/drop-menu");
+  var _componentsDropMenuDefault = _parcelHelpers.interopDefault(_componentsDropMenu);
+  var _jsxFileName = "C:\\Users\\lpedroso\\Desktop\\IoT With Auth\\src\\public\\static\\js\\admin.js";
+  class Header extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("header", {
+          className: "flex-center",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 13,
+            columnNumber: 7
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("div", {
+          id: "title",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 14,
+            columnNumber: 9
+          }
+        }, "Grupos"), /*#__PURE__*/_reactDefault.default.createElement(_componentsDropMenuDefault.default, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 15,
+            columnNumber: 9
+          }
+        }))
+      );
+    }
+  }
+  class Main extends _reactDefault.default.Component {
+    render() {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("main", {
+          className: "flex-center",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 27,
+            columnNumber: 5
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("div", {
+          id: "group-container",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 28,
+            columnNumber: 5
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("a", {
+          href: "#",
+          className: "group flex-center",
+          id: "g-1",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 29,
+            columnNumber: 9
+          }
+        }, "Quarto"), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          className: "group flex-center blank",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 30,
+            columnNumber: 9
+          }
+        })), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          id: "new-group-btn",
+          class: "flex-center",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 33,
+            columnNumber: 5
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("div", {
+          className: "dash d-1",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 34,
+            columnNumber: 9
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          className: "dash d-2",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 35,
+            columnNumber: 9
+          }
+        })), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          id: "gradient",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 38,
+            columnNumber: 5
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          id: "pop-up",
+          class: "flex-center",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 39,
+            columnNumber: 5
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("div", {
+          class: "pop-up-container",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 40,
+            columnNumber: 13
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("h4", {
+          class: "pop-up-title",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 41,
+            columnNumber: 18
+          }
+        }, "Novo Grupo"), /*#__PURE__*/_reactDefault.default.createElement("input", {
+          type: "text",
+          id: "pop-up-input-name",
+          placeholder: "Nome do grupo",
+          maxlength: "12",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 42,
+            columnNumber: 18
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          class: "pop-up-button-container",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 43,
+            columnNumber: 18
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("button", {
+          id: "accept-btn",
+          class: "pop-up-btn",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 44,
+            columnNumber: 21
+          }
+        }, "Confirma"), /*#__PURE__*/_reactDefault.default.createElement("button", {
+          id: "cancel-btn",
+          class: "pop-up-btn",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 45,
+            columnNumber: 21
+          }
+        }, "Cancela")))))
+      );
+    }
+  }
+  class Footer extends _reactDefault.default.Component {
+    render() {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("footer", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 56,
+            columnNumber: 13
+          }
+        })
+      );
+    }
+  }
+  function App() {
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 66,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(Header, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 67,
+          columnNumber: 3
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement(Main, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 68,
+          columnNumber: 3
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement(Footer, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 69,
+          columnNumber: 3
+        }
+      }))
+    );
+  }
+  _c = App;
+  _reactDomDefault.default.render(/*#__PURE__*/_reactDefault.default.createElement(App, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77,
+      columnNumber: 3
+    }
+  }), document.getElementById('root'));
+  var _c;
+  $RefreshReg$(_c, "App");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

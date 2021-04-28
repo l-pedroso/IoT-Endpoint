@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nodemon src/app.js",
     "start": "node src/app.js",
-    "dev": "parcel serve ./src/public/js/**/*.js --dist-dir ./src/public/dist"
+    "dev": "parcel serve ./src/public/admin.html --dist-dir ./src/public/dist"
   },
   "author": "Felipe",
   "license": "ISC",
@@ -22,6 +22,8 @@
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^1.12.3",
     "mongoose": "^5.11.19",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "uuidv4": "^6.2.7"
   },
   "devDependencies": {

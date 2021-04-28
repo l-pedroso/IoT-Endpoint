@@ -1,0 +1,43 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+var _jsxFileName = "C:\\Users\\lpedroso\\Desktop\\IoT With Auth\\src\\public\\src\\components\\drop-menu.js";
+class DropMenu extends React.Component {
+  render() {
+    return (
+      /*#__PURE__*/React.createElement("div", {
+        id: "drop-menu",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 4,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "drop-line dp-1",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 5,
+          columnNumber: 17
+        }
+      }), /*#__PURE__*/React.createElement("div", {
+        className: "drop-line dp-2",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 6,
+          columnNumber: 17
+        }
+      }), /*#__PURE__*/React.createElement("div", {
+        className: "drop-line dp-3",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7,
+          columnNumber: 17
+        }
+      }))
+    );
+  }
+}
+exports.default = DropMenu;
