@@ -30,48 +30,52 @@ html {
 }
 
 
-
 /*NAVBAR*/
 header{
     width: 100%;
     height: 50px;
     background-color: var(--base-color);
-    position: absolute;
+    position: fixed;
+    z-index: 2;
 }
 
 /*nav title*/
-#title{
+.title{
     font-weight: 500;
     font-size: 120%;
     align-self: center;
+    color:var(--background-text-color);
 }
 
 /*drawer*/
-#drop-menu{
-    width: 30px;
-    height: 45px;
+.drop-menu{
     position: absolute;
-    right: 3%;
+    right: 0px;
+    top: 0px;
+    width: 250px;
+    
 }
 
-.drop-line{
-    height: 3px;
-    width: 100%;
-    background-color:var(--background-text-color);
+.menu-btn{
     position: absolute;
+    height: 50px;
+    color: var(--background-text-color);
+    display: flex;
+    font-size: 40px;
+    right: 5px;
 }
 
-.dp-1 {
-    top: 27%;
+.menu-btn::after{
+    display: none;
 }
 
-.dp-2 {
-    top: 46%;
+.menu-list{
+    background-color: var(--background-text-color);
+    color: var(--background-text-color);
+    margin: 0;
 }
 
-.dp-3 {
-    top: 65%;
-}
+
 
 /*MAIN*/
 main{
@@ -104,37 +108,25 @@ main{
     
 }
 
-.group{
+.entity{
     box-shadow: 4px 4px 4px var(--shadow-color);
     background-color: var(--group-color);
     border-radius: 10px;
     font-size: 80%;
     overflow: hidden;
-    color: inherit;
+    color: var(--background-text-color);
     text-decoration: none;
 }
 
 
-#new-group-btn{
+
+.new-group-btn{
     position: fixed;
-    height: 45px;
-    width: 45px;
     bottom: 80px;
     right: 50px;
-    background-color: var(--base-color);
-    font-size: 200%;
+    font-size: 48px;
     border-radius: 50%;
-}
-
-.dash{
-    width: 15px;
-    height: 4px;
-    background-color: var(--background-text-color);
-}
-
-.d-2{
-    position: absolute;
-    transform: rotate(90deg);
+    color: var(--base-color);
 }
 
 .blank{
