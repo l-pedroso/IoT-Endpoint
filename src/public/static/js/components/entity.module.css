@@ -1,0 +1,12 @@
+.entity{
+    box-shadow: 4px 4px 4px var(--shadow-color);
+    background-color: var(--group-color);
+    border-radius: 10px;
+    font-size: 80%;
+    overflow: hidden;
+    color: var(--background-text-color);
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

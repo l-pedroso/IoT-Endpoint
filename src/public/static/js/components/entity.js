@@ -1,8 +1,8 @@
-
+import * as style from './entity.module.css'
 
 export default class Entity extends React.Component{ 
 
     render(){
-        return(<div className="entity flex-center" id="g-1">Quarto</div>);
+        return(<div className={style.entity}>Quarto</div>);
     }
 }

@@ -1,12 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import DropMenu from "./components/drop-menu"
+import Menu from "./components/menu"
 import Entity from "./components/entity"
-import Modal from "./components/popup"
+import Modal from "./components/modal"
 
-function print(){
-  console.log('clicou');
-}
 
 class Header extends React.Component{
 
@@ -18,7 +15,8 @@ class Header extends React.Component{
     return (
       <header className="flex-center">
         <div className="title">Grupos</div>
-        <DropMenu></DropMenu>
+        <Menu></Menu>
+        <Modal mode={'grupo'} show={true}></Modal>
       </header>
     )
   }
@@ -31,14 +29,13 @@ class Main extends React.Component{
   render(){
     return (  
     <main className="flex-center">
-        <div id="group-container">
+        <div className="group-container">
             <Entity></Entity>
             <div className="group flex-center blank"></div>  
         </div>
         <div className="new-group-btn flex-center">
             <ion-icon name="add-circle"></ion-icon>
         </div>
-        <Modal></Modal>
     </main>)
   }
 }

@@ -1,0 +1,28 @@
+
+.menu{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 150px;
+    height: 50px;
+}
+
+.btn{
+    position: absolute;
+    height: 50px;
+    color: var(--background-text-color);
+    display: flex;
+    font-size: 40px;
+    right: 5px;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.list{
+    background-color: var(--background-text-color);
+    color: var(--background-text-color);
+    margin: 0;
+}
+

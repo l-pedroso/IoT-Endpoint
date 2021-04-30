@@ -1,0 +1,19 @@
+
+
+.title{
+    color: var(--base-color);
+}
+
+
+.name{
+    border-style: none;
+    border-bottom: 1px solid var(--group-color);
+    width: 100%;
+}
+
+.name:hover{
+    border-style: none;
+}
+.name::placeholder{
+    color: var(--group-color);
+}
