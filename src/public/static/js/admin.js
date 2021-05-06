@@ -16,7 +16,6 @@ class Header extends React.Component{
       <header className="flex-center">
         <div className="title">Grupos</div>
         <Menu></Menu>
-        <Modal mode={'grupo'} show={true}></Modal>
       </header>
     )
   }
@@ -25,6 +24,23 @@ class Header extends React.Component{
 
 
 class Main extends React.Component{
+
+  constructor(props){
+    super(props);
+    this.state = {
+      popup: false,
+    }
+    this.handleModalOpen = this.handleModalOpen.bind(this);
+    this.handleModalClose = this.handleModalClose.bind(this);
+  }
+
+  handleModalOpen(){
+    this.setState({popup:true});
+  }
+
+  handleModalClose(){
+    this.setState({popup: false});
+  }
   
   render(){
     return (  
@@ -33,9 +49,10 @@ class Main extends React.Component{
             <Entity></Entity>
             <div className="group flex-center blank"></div>  
         </div>
-        <div className="new-group-btn flex-center">
+        <div className="new-group-btn flex-center" onClick={this.handleModalOpen}>
             <ion-icon name="add-circle"></ion-icon>
         </div>
+        <Modal mode={'grupo'} show={this.state.popup} onModalClose={this.handleModalClose}></Modal>
     </main>)
   }
 }

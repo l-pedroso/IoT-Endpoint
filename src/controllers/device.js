@@ -10,17 +10,9 @@ module.exports = class{
 
     async addDevice(){
         try{
-        
-          const userStatus = this.user.getUserStatus();
-
-          if(userStatus != userEnum.USER_OK) return resultEnum.ERROR;
-
           const uniqueID = uuid();
+           this.user.addDevice(uniqueID);
 
-          let userInfo = await this.user.getUserInfo();
-          userInfo.devices.push({deviceID:uniqueID});
-          await userInfo.save();
-      
           const response = await axios({
             method: 'post',
             url: 'https://tfik1l.internetofthings.ibmcloud.com/api/v0002/device/types/Switch/devices',
@@ -41,7 +33,7 @@ module.exports = class{
           //if(result.n === 1) return console.log('device add with sucess');
         }
         catch(e){
-          return console.log(e + 'error in update')
+          throw e;
         } 
       }
 

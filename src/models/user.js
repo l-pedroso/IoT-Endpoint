@@ -15,16 +15,11 @@ userSchema = new Schema({
         type: String,
     },
 
-    emailVerified: {
-        type: Boolean,
-        required: true,
-    },
-
-    devices:[
-        {
-            deviceID:  String,   
-        }
-    ] 
+    devices:{
+        type: Array,
+    }
+        
+            
 });
 
 
