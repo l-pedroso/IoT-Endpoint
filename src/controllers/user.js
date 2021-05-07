@@ -1,11 +1,10 @@
 const axios = require('axios').default;
 const UserModel = require('../models/user');
 const {resultEnum, userEnum} = require('../utils/enuns/globals.enum');
-const errors = require('../utils/error/error');
+const baseError = require('../utils/error/baseError');
  
 
 module.exports = class{
-
   constructor(token){
     this.accessToken = token; 
     this._userStatus = userEnum.INTERNAL_ERROR; 
@@ -36,11 +35,10 @@ module.exports = class{
         }
         return;
       }
-      this._userStatus = userEnum.EMAIL_NOT_VERIFIED; // email not verified 
-      return;    
+      throw new baseError(userEnum.EMAIL_NOT_VERIFIED);  
     }
     catch(e){
-      throw new errors('user not found');
+      throw e;
     }
   }
 
@@ -50,14 +48,15 @@ module.exports = class{
       if(this._userStatus === userEnum.USER_NOT_FOUND){
         const newUser = new UserModel({userEmail: this._email, givenName: this._givenName, lastName: this._lastName});
         const result = await newUser.save();
-       if(result === newUser){
-         this._userStatus = userEnum.USER_OK;
-       } 
+        if(result === newUser){
+           this._userStatus = userEnum.USER_OK;
+         }else{
+          throw new baseError(userEnum.ERROR);
+        } 
       }
-      return this._userStatus;
     }
     catch(e){
-      throw(e);
+      throw e;
     }
   }
 
@@ -71,7 +70,7 @@ module.exports = class{
     try{
       const query = await UserModel.findOne({userEmail: this._email});
       if(query) return query;
-      throw e;
+      throw new baseError(userEnum.USER_NOT_FOUND);
     }
     catch(e){
       throw e;
@@ -80,7 +79,6 @@ module.exports = class{
 
   async addDevice(uuid){
     await this._init();
-
     if(this._userStatus === userEnum.USER_OK){
       try{
         let user = await this.getUserInfo();
@@ -88,7 +86,7 @@ module.exports = class{
         await user.save();
       }
       catch(e){
-        throw (e);
+        throw e;
       }
     }
     return this._userStatus;

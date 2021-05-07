@@ -1,6 +1,7 @@
 const { default: axios } = require('axios');
 const { uuid } = require('uuidv4');
 const {resultEnum, userEnum} = require('../utils/enuns/globals.enum');
+const Device = require('../models/device');
 
 module.exports = class{
 
@@ -13,11 +14,13 @@ module.exports = class{
           const uniqueID = uuid();
            this.user.addDevice(uniqueID);
 
+          
+
           const response = await axios({
             method: 'post',
             url: 'https://tfik1l.internetofthings.ibmcloud.com/api/v0002/device/types/Switch/devices',
             headers: {
-              'Authorization': 'Basic YS10ZmlrMWwtZm81ZWVlMjFmZzpWRFFXSG5GM0ZSWW9NKEpPNGs=',
+              'Authorization': 'Basic YS10ZmlrMWwtZm81ZWVlMjFmZzpWRFFXSG5GM0ZSWW9NKEpPNGs',
             },
             data:{
               deviceId: uniqueID,
@@ -25,6 +28,8 @@ module.exports = class{
             }
           });
 
+          const device = new Device({name: 'teste'});
+          device.save();
 
           return resultEnum.SUCCESS;
   
